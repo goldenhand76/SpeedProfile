@@ -1,16 +1,20 @@
-# This is a sample Python script.
+import pandas as pd
+import matplotlib.pyplot as plt
+import os
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+path = "data/"
+files = os.listdir(path)
+for _ in files:
+    file = pd.read_csv(f"data/{_}", header=None)
+    file.columns = ["Gy", "Gy_Filtered", "Speed"]
+    title = _.replace("_200", "").replace(".csv", "")
+    plt.figure(figsize=(10,5))
+    plt.plot(file.index, file["Gy"])
+    plt.plot(file.index, file["Gy_Filtered"])
+    plt.plot(file.index, file["Speed"])
+    plt.xlabel("Step")
+    plt.ylabel("Deg/Sec")
+    plt.title(title)
+    plt.savefig(f'assets/plt/{title}.png')
+    plt.show()
 
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
