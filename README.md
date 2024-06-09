@@ -20,36 +20,42 @@ Here, the gyroscopic data (`gy`) is adjusted with an offset of 135 units to corr
 #### Speed Profile Implementations
 Various speed profiles were implemented to modulate the delay between steps of the stepper motor, which in turn affects its speed. The profiles explored include:
 
+![image info](assets/plt/Linear.png)
 1. **Linear:**
    ```cpp
    new_delay = delayMicros / (step / set_step);
    ```
 
+![image info](assets/plt/Log.png)
 2. **Logarithmic:**
    ```cpp
    new_delay = delayMicros / (log(step) / log(set_step));
    ```
 
+![image info](assets/plt/Quadratic.png)
 3. **Quadratic:**
    ```cpp
    new_delay = delayMicros / (pow(step, 2) / pow(set_step, 2));
    ```
 
+![image info](assets/plt/Exponential.png)
 4. **Exponential:**
    ```cpp
    new_delay = delayMicros / (pow(e, step * ln2 / set_step) - 1);
    ```
 
+![image info](assets/plt/Sin.png)
 5. **Sine:**
    ```cpp
    new_delay = delayMicros / sin(1.571 * step / set_step);
    ```
-
+![image info](assets/plt/Cubic.png)
 6. **Cubic:**
    ```cpp
    new_delay = delayMicros / (pow(step, 3) / pow(set_step, 3));
    ```
 
+![image info](assets/plt/Sigmoid.png)
 7. **Sigmoid:**
    ```cpp
    new_delay = delayMicros / (1 / (1 + pow(e, -(step - (set_step / 2)))));
