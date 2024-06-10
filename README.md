@@ -1,5 +1,5 @@
 # SpeedProfile
-![image info](assets/img/Graph.png)
+![image info](assets/img/image.png)
 Measuring the Kinematics parameters of an Inverted Pendulum with different speed profiles. 
 
 ### Project Description: Comparing Speed Profiles and Gyro Effects on Stepper Motor Movement
